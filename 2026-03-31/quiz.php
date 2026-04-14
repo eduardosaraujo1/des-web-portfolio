@@ -1,6 +1,6 @@
 <?php
-require 'scripts/global.php';
-require 'scripts/get-perguntas.php';
+require "scripts/global.php";
+require "scripts/get-perguntas.php";
 
 auth_check();
 $pageTitle = "Perguntas PHP - QuizMe";
@@ -9,7 +9,7 @@ $perguntas = get_perguntas();
 $questionCount = count($perguntas);
 ?>
 
-<?php require 'view/header.phtml' ?>
+<?php require "view/header.phtml"; ?>
 <div class="w-100 min-vh-100 pt-3 bg-dark text-light overflow-hidden no-scroll">
     <h1 class="text-center">Quiz de PHP!</h1>
     <noscript>
@@ -23,27 +23,28 @@ $questionCount = count($perguntas);
                     <!-- Carousel Content (card) -->
                     <div class="card mx-auto w-100" style="max-width:36rem;min-height:20.25rem;">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Pergunta <?= e($pergunta['id']) ?> - <?= e($pergunta['text']) ?></h5>
-                            <?php if ($pergunta['formType'] === 'select'): ?>
-                                <select required class="form-select" name="<?= e($pergunta['id']) ?>[]">
+                            <h5 class="card-title">Pergunta <?= e($pergunta["id"]) ?> - <?= e($pergunta["text"]) ?></h5>
+                            <?php if ($pergunta["formType"] === "select"): ?>
+                                <select required class="form-select" name="<?= e($pergunta["id"]) ?>[]">
                                     <option value="" selected>Selecione uma opção</option>
-                                    <?php foreach ($pergunta['alternatives'] as $i => $alternativa): ?>
+                                    <?php foreach ($pergunta["alternatives"] as $i => $alternativa): ?>
                                         <option value="<?= e($i) ?>"><?= e($alternativa) ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             <?php else: ?>
                                 <ol class="list-group list-group-flush list-group-numbered-alpha">
-                                    <?php foreach ($pergunta['alternatives'] as $i => $alternativa): ?>
-                                        <?php
-                                        ?>
+                                    <?php foreach ($pergunta["alternatives"] as $i => $alternativa): ?>
+                                        <?php  ?>
                                         <li class="list-group-item d-flex gap-2">
                                             <div class="form-check w-100">
                                                 <input
-                                                    <?= $pergunta['formType'] === 'checkbox' ? '' : 'required' ?>
-                                                    class="form-check-input" type="<?= e($pergunta['formType']) ?>"
-                                                    name="<?= e($pergunta['id']) ?>[]"
-                                                    value="<?= e($i) ?>" id="<?= $pergunta['id'] . "_" . $i ?>">
-                                                <label class="form-check-label w-100" for="<?= $pergunta['id'] . "_" . $i ?>"><?= e($alternativa) ?></label>
+                                                    <?= $pergunta["formType"] === "checkbox" ? "" : "required" ?>
+                                                    class="form-check-input" type="<?= e($pergunta["formType"]) ?>"
+                                                    name="<?= e($pergunta["id"]) ?>[]"
+                                                    value="<?= e($i) ?>" id="<?= $pergunta["id"] . "_" . $i ?>">
+                                                <label class="form-check-label w-100" for="<?= $pergunta["id"] .
+                                                    "_" .
+                                                    $i ?>"><?= e($alternativa) ?></label>
                                             </div>
                                         </li>
                                     <?php endforeach; ?>
@@ -58,7 +59,7 @@ $questionCount = count($perguntas);
                                     <button type="button" class="btn btn-primary js-btn-next ms-auto">Próximo</button>
                                 <?php else: ?>
                                     <button class="btn btn-success js-btn-submit ms-auto">Enviar respostas</button>
-                                <?php endif;  ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -161,4 +162,4 @@ $questionCount = count($perguntas);
         carouselController.updateDOM();
     });
 </script>
-<?php require 'view/footer.phtml'; ?>
+<?php require "view/footer.phtml"; ?>
