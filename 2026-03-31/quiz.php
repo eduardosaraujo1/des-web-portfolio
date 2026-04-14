@@ -35,9 +35,6 @@ $questionCount = count($perguntas);
                                 <ol class="list-group list-group-flush list-group-numbered-alpha">
                                     <?php foreach ($pergunta['alternatives'] as $i => $alternativa): ?>
                                         <?php
-                                        // Problema: quero que o 'id' seja único na página toda, para que assim o label aponte para o item certo
-                                        // Não há nenhum identificador único de alternativa de pergunta (apesar de existir $pergunta['id'] e $i, combinar esses dois números é complicado)
-                                        // Solução simples: usar um hash
                                         ?>
                                         <li class="list-group-item d-flex gap-2">
                                             <div class="form-check w-100">
