@@ -41,10 +41,9 @@ $questionCount = count($perguntas);
                                                     <?= $pergunta["formType"] === "checkbox" ? "" : "required" ?>
                                                     class="form-check-input" type="<?= e($pergunta["formType"]) ?>"
                                                     name="<?= e($pergunta["id"]) ?>[]"
-                                                    value="<?= e($i) ?>" id="<?= $pergunta["id"] . "_" . $i ?>">
+                                                    value="<?= e($i) ?>" id="<?= $pergunta["id"] . "_$i" ?>">
                                                 <label class="form-check-label w-100" for="<?= $pergunta["id"] .
-                                                    "_" .
-                                                    $i ?>"><?= e($alternativa) ?></label>
+                                                    "_$i" ?>"><?= e($alternativa) ?></label>
                                             </div>
                                         </li>
                                     <?php endforeach; ?>
