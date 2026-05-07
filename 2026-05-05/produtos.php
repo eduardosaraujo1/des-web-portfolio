@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav>
         <span class="brand">Minha Loja</span>
@@ -20,11 +22,13 @@
             <li class="navitem"><a href="#">Gerenciar produtos</a></li>
         </ul>
     </nav>
-    <div class="w-100">
+    <br>
+    <div class="mx-4 grid items-center">
         <?php
         require('conexao.php');
         $select = $conexao->query("SELECT*FROM tb_produto");
-        echo "<table border = '1'>";
+        echo "<table class=\"product-table\" style=\"width:40rem\">";
+        echo "<thead>";
         echo "<tr>";
         echo "<th>ID</th>";
         echo "<th>Foto</th>";
@@ -33,26 +37,28 @@
         echo "<th>Preço</th>";
         echo "<th>Ações</th>";
         echo "</tr>";
-        while($produto = $select->fetch(PDO::FETCH_ASSOC))
-        {
-        
+        echo "</thead>";
+        echo "<tbody>";
+        while ($produto = $select->fetch(PDO::FETCH_ASSOC)) {
+
             echo "<tr>";
             echo "<td> {$produto['id']} </td>";
             echo "<td> <img src='{$produto['foto']}' style='width:60px'> </td>";
             echo "<td> {$produto['nome']} </td>";
             echo "<td> {$produto['quantidade']} </td>";
             echo "<td> {$produto['preco']} </td>";
-            echo "<td><a href= 'editar.php? id={$produto['id']}'>Editar</a> |
-                <a href= 'delete.php? id={$produto['id']}'>Excluir</a>
+            echo "<td><a class='btn' href= 'editar.php?id={$produto['id']}'>Editar</a> |
+                <a class=\"btn\" style='background-color:darkred' href= 'delete.php? id={$produto['id']}'>Excluir</a>
                 </td>";
             echo "</tr>";
         }
+        echo "</tbody>";
         echo "</table>";
         //FECHA A CONEXAO
         $conexao = null;
         ?>
-        
+
     </div>
 </body>
-</html>
 
+</html>

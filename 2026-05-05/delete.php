@@ -4,15 +4,12 @@ $id = $_GET['id'];
 include('conexao.php');
 
 
-try{
-    $delete = $conexao->prepare("DELETE * FROM tb_produto WHERE id=$id");
+try {
+    $delete = $conexao->prepare("DELETE FROM tb_produto WHERE id=$id");
 
     $delete->execute();
 
-    header('location:produtos.php');
-
+    header('Location: produtos.php');
+} catch (PDOException $e) {
+    echo "Erro: " . $e->getMessage();
 }
-
-catch(PDOException $e){}
-
-?>
