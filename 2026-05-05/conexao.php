@@ -1,15 +1,15 @@
 <?php
 //CREDENCIAIS DE ACESSO AO SGBD
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "admin";
+$password = "admin";
 
-try{
+try {
     //OBJETO CONEXAO
-    $conexao = new PDO ("mysql:host =$servername", $username,$password);
+    $conexao = new PDO("mysql:host =$servername", $username, $password);
 
     //LANÇA AS EXECOES (ERROS DURANTE A CONEXÃO)
-    $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //QUERY PARA CRIAR BANCO E A TABELA
     $sql = "CREATE DATABASE IF NOT EXISTS banco;
@@ -22,15 +22,14 @@ try{
             foto varchar(100) NOT NULL)";
 
 
-         //EXECUTA A QUERY
-         $conexao->exec($sql);
-         //echo "Banco de dados criado com sucesso<br>";
+    //EXECUTA A QUERY
+    $conexao->exec($sql);
+    //echo "Banco de dados criado com sucesso<br>";
 
-        
-        }
 
-        //RETORNA A EXCESSAO (ERROS) DURANTE A CONEXAO
-        catch(PDOException $e){
-            echo $sql . "<br>" .$e->getMessage();
-                }
-        ?>
+}
+
+//RETORNA A EXCESSAO (ERROS) DURANTE A CONEXAO
+catch (PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
+}

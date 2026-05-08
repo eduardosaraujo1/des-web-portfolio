@@ -44,7 +44,7 @@ F1, Remove Tag
                     <span class="bold block font-big"><?= $produto['nome'] ?></span>
                     <span class="block"> <span>Quantidade:</span> <?= $produto['quantidade'] ?></span>
                     <span class="block bold">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></span>
-                    <button class="btn w-100">Comprar</button>
+                    <button class="btn my-2 w-100">Comprar</button>
                 </form>
             <?php endwhile; ?>
         </div>
