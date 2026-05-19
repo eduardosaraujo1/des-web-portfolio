@@ -1,1 +1,0 @@
-Dupla: Eduardo e Leticia
